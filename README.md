@@ -27,13 +27,12 @@
 
 ### commit相关
 
-使用commitlint是因为vscode直接编写会绕过去
-
 ```bash
 // 添加格式化命令
 npm pkg set scripts.format="prettier --write \"src/**/*\" --ignore-unknown"
 npm run format
 
+// 使用commitlint是因为vscode直接编写会绕过去
 pnpm i -D commitizen cz-conventional-changelog husky lint-staged @commitlint/cli @commitlint/config-conventional
 npx husky install
 npm pkg set scripts.prepare="husky install"
@@ -52,4 +51,17 @@ package.json
     }
   }
 }
+
+commitlint.config.js
+module.exports = {
+  extends: ["@commitlint/config-conventional"],
+};
+```
+
+## 运行方式
+
+```bash
+pnpm i
+
+因为对commit message有限制 提交代码请采用命令行方式提交git commit -m "test"
 ```
