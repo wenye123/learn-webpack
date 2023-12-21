@@ -7,7 +7,7 @@
     "build:prod": "rm -rf dist/* && export NODE_ENV=production && webpack",
     "build:dev": "rm -rf dist/* && export NODE_ENV=development && webpack",
     "dev": "export NODE_ENV=development && webpack server --hot",
-    "format": "prettier --write \"src/**/*.{vue,js,ts,json,ts,tsx,css,less,scss}\"",
+    "format": "prettier --write \"src/**/*\" --ignore-unknown",
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "prepare": "husky install"
