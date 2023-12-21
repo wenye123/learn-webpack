@@ -34,5 +34,3 @@ import "@/assets/style/style.scss";
 //   throw 111;
 // }
 // sourcemap();
-
-console.log("test");
