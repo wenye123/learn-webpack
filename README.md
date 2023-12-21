@@ -28,6 +28,10 @@
 ### commit相关
 
 ```bash
+// 添加格式化命令
+npm pkg set scripts.format="prettier --write \"src/**/*\" --ignore-unknown"
+npm run format
+
 pnpm i -D commitizen cz-conventional-changelog husky lint-staged
 npx husky install
 npm pkg set scripts.prepare="husky install"
@@ -36,7 +40,7 @@ npx husky add .husky/pre-commit "npx lint-staged && git add -A"
 package.json
 {
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "src/**/*": "prettier --write --ignore-unknown"
   }
 }
 ```
