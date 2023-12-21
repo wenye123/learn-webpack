@@ -27,16 +27,19 @@
 
 ### commit相关
 
+使用commitlint是因为vscode直接编写会绕过去
+
 ```bash
 // 添加格式化命令
 npm pkg set scripts.format="prettier --write \"src/**/*\" --ignore-unknown"
 npm run format
 
-pnpm i -D commitizen cz-conventional-changelog husky lint-staged
+pnpm i -D commitizen cz-conventional-changelog husky lint-staged @commitlint/cli @commitlint/config-conventional
 npx husky install
 npm pkg set scripts.prepare="husky install"
 npx husky add .husky/pre-commit "npx lint-staged --allow-empty && git add -A"
 npx husky add .husky/prepare-commit-msg "exec < /dev/tty && npx git-cz --hook || true"
+npx husky add .husky/commit-msg "npx commitlint -e $HUSKY_GIT_PARAMS"
 
 package.json
 {
