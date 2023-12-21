@@ -35,12 +35,17 @@ npm run format
 pnpm i -D commitizen cz-conventional-changelog husky lint-staged
 npx husky install
 npm pkg set scripts.prepare="husky install"
-npx husky add .husky/pre-commit "npx lint-staged && git add -A"
+npx husky add .husky/pre-commit "npx lint-staged && git add -A && npx git-cz"
 
 package.json
 {
   "lint-staged": {
     "src/**/*": "prettier --write --ignore-unknown"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
 ```
