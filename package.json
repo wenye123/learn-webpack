@@ -10,8 +10,7 @@
     "format": "prettier --write \"src/**/*\" --ignore-unknown",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "prepare": "husky install",
-    "commit": "git-cz"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
