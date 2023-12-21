@@ -9,7 +9,10 @@
     "dev": "export NODE_ENV=development && webpack server --hot",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "prepare": "echo 'install之后或者publish之前执行'"
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "keywords": [],
   "author": "",

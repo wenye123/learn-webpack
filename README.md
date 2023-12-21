@@ -31,7 +31,7 @@
 pnpm i -D commitizen cz-conventional-changelog husky lint-staged
 npx husky install
 npm pkg set scripts.prepare="husky install"
-npx husky add .husky/pre-commit "npx lint-staged; git add -A"
+npx husky add .husky/pre-commit "npx lint-staged && git add -A"
 
 package.json
 {
