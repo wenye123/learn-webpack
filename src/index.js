@@ -40,9 +40,14 @@
 // import button from "button";
 // console.log(button);
 
-import "@/assets/style/style.css";
+// import "@/assets/style/style.css";
 
-async function sourcemap() {
-  throw 111;
-}
-sourcemap();
+// async function sourcemap() {
+//   throw 111;
+// }
+// sourcemap();
+
+let a = 0;
+let b = 0;
+const c = a + b;
+console.log(c);
