@@ -33,7 +33,7 @@ npm pkg set scripts.format="prettier --write \"src/**/*\" --ignore-unknown"
 npm run format
 
 // 使用commitlint是因为vscode直接编写会绕过去
-pnpm i -D commitizen cz-conventional-changelog husky lint-staged @commitlint/cli @commitlint/config-conventional
+pnpm i -D commitizen cz-conventional-changelog husky lint-staged @commitlint/cli @commitlint/config-conventional commit-and-tag-version
 npx husky install
 npm pkg set scripts.prepare="husky install"
 npx husky add .husky/pre-commit "npx lint-staged --allow-empty && git add -A"
