@@ -7,6 +7,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { EsbuildPlugin } from "esbuild-loader";
 import TerserPlugin from "terser-webpack-plugin";
 import StylelintPlugin from "stylelint-webpack-plugin";
+import ESLintWebpackPlugin from "eslint-webpack-plugin";
 
 const isPro = process.env.NODE_ENV === "production";
 
@@ -16,7 +17,7 @@ export default {
   watch: true,
   entry: {
     // 将runtime单独打包
-    main: { import: "./src/index.ts", runtime: "runtime" },
+    main: { import: "./src/index.js", runtime: "runtime" },
     // main: "./src/index.ts",
   },
   output: {
@@ -113,6 +114,10 @@ export default {
       context: "src",
       extensions: ["css", "less", "scss"],
       fix: true, // 配置是否自动格式化代码
+    }),
+    new ESLintWebpackPlugin({
+      extensions: ["js", "ts"],
+      // fix: true, // 自动修复
     }),
     new ForkTsCheckerWebpackPlugin(),
     new EsbuildPlugin({

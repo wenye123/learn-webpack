@@ -1,6 +1,12 @@
 编写一个vue相关的模板配置
 编写一个loader
 
+学习webpack好处
+
+- 学习一种理念
+- 下次出问题知道怎么解决
+- 可以webpack基础上自己编写插件等工具 提高效率
+
 - 研究style-loader 和 css-loader写法
   编写一个plugin
 
