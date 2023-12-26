@@ -26,11 +26,16 @@
 
 // import dayjs from "dayjs";
 
-import "@/assets/style/style.css";
+// import "@/assets/style/style.css";
 import "@/assets/style/style.less";
-import "@/assets/style/style.scss";
+// import "@/assets/style/style.scss";
 
 // async function sourcemap() {
 //   throw 111;
 // }
 // sourcemap();
+
+import { createApp } from "vue";
+import App from "./App.vue";
+
+createApp(App as any).mount("#app");
