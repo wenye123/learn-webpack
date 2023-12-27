@@ -30,10 +30,10 @@
 import "@/assets/style/style.less";
 // import "@/assets/style/style.scss";
 
-// async function sourcemap() {
-//   throw 111;
-// }
-// sourcemap();
+async function sourcemap() {
+  throw 111;
+}
+sourcemap();
 
 import { createApp } from "vue";
 import App from "./App.vue";

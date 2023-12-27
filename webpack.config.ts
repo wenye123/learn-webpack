@@ -9,12 +9,13 @@ import TerserPlugin from "terser-webpack-plugin";
 import StylelintPlugin from "stylelint-webpack-plugin";
 import ESLintWebpackPlugin from "eslint-webpack-plugin";
 import { VueLoaderPlugin } from "vue-loader";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const isPro = process.env.NODE_ENV === "production";
 
 export default {
   mode: process.env.NODE_ENV,
-  devtool: isPro ? false : "source-map",
+  devtool: isPro ? "hidden-source-map" : "source-map",
   // watch: true,
   entry: {
     // 将runtime单独打包
@@ -182,15 +183,12 @@ export default {
     // modules: ["node_modules", path.resolve(__dirname, "src/modules")],
   },
   optimization: {
-    // minimize: true, // 配置source map这个必备
-    minimize: false,
+    minimize: true, // 配置source map这个必备
     minimizer: [
-      isPro
-        ? new EsbuildPlugin({
-            css: true,
-            target: "es2015",
-          })
-        : new TerserPlugin(), // 只对source map生效,
+      new TerserPlugin({
+        extractComments: !isPro,
+      }),
+      new CssMinimizerPlugin(),
     ],
   },
   devServer: {
@@ -201,10 +199,10 @@ export default {
 
   performance: {
     // 提示类型
-    hints: isPro ? "error" : "warning",
+    hints: isPro ? "error" : false,
     // 生成文件的最大体积 设置为1M
-    maxAssetSize: 1000000,
+    maxAssetSize: isPro ? 1000000 : undefined,
     // 入口文件最大体积 250kb
-    maxEntrypointSize: 1000000,
+    maxEntrypointSize: isPro ? 250000 : undefined,
   },
 } as webpack.Configuration;
