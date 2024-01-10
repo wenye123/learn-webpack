@@ -47,7 +47,7 @@
 // }
 // sourcemap();
 
-let a = 0;
-let b = 0;
-const c = a + b;
-console.log(c);
+// let a = 0;
+// let b = 0;
+// const c = a + b;
+// console.log(c);

@@ -10,6 +10,7 @@ import StylelintPlugin from "stylelint-webpack-plugin";
 import ESLintWebpackPlugin from "eslint-webpack-plugin";
 import { VueLoaderPlugin } from "vue-loader";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+// import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
 
 const isPro = process.env.NODE_ENV === "production";
 
@@ -20,7 +21,7 @@ export default {
   entry: {
     // 将runtime单独打包
     // main: { import: "./src/index.js", runtime: "runtime" },
-    main: "./src/index.ts",
+    main: "./src/index.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -140,6 +141,11 @@ export default {
       //   // type: "asset/inline",
       //   type: "asset/resource",
       // },
+
+      {
+        test: /\.(jpe?g|png|webp|svg)$/i,
+        type: "asset",
+      },
     ],
   },
   plugins: [
@@ -168,6 +174,23 @@ export default {
       },
     }),
     new VueLoaderPlugin(),
+    // sharp如果在m1安装  npm_config_arch=arm64 npm_config_platform=darwin pnpm install -D sharp
+    // new ImageMinimizerPlugin({
+    //   minimizer: {
+    //     implementation: ImageMinimizerPlugin.sharpMinify,
+    //     options: {
+    //       encodeOptions: {
+    //         jpeg: {
+    //           quality: 100,
+    //         },
+    //         webp: {
+    //           lossless: true,
+    //         },
+    //         png: {},
+    //       },
+    //     },
+    //   },
+    // }),
   ],
   resolve: {
     alias: {
@@ -198,8 +221,12 @@ export default {
   },
 
   performance: {
+    // 只针对js和css文件
+    assetFilter: function (assetFilename: string) {
+      return assetFilename.endsWith(".js") || assetFilename.endsWith(".css");
+    },
     // 提示类型
-    hints: isPro ? "error" : false,
+    hints: isPro ? "warning" : false,
     // 生成文件的最大体积 设置为1M
     maxAssetSize: isPro ? 1000000 : undefined,
     // 入口文件最大体积 250kb

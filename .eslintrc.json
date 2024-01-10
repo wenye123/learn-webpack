@@ -4,7 +4,7 @@
     "browser": true,
     "es2021": true
   },
-  "ignorePatterns": ["dist"],
+  "ignorePatterns": ["dist", "script"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
