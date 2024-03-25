@@ -1,25 +1,6 @@
-编写一个vue相关的模板配置
-编写一个loader
+## webpack配置模板
 
-学习webpack好处
-
-- 学习一种理念
-- 下次出问题知道怎么解决
-- 可以webpack基础上自己编写插件等工具 提高效率
-
-- 研究style-loader 和 css-loader写法
-  编写一个plugin
-
-### 观念更新
-
-- webpack默认是可以打包js和json 而不需要额外的loader
-- publicPath可以通过运行时赋值 -- 不能针对index.html生效 毫无卵用
-- 可以通过webpack init初始化配置文件 -- 没啥卵用
-- 默认打包格式就是iife
-
-## vscode
-
-- vscode开启保存自动格式化
+手动配置webpack和各种格式化 commit lint工具
 
 ### 需要安装的vscode插件
 
@@ -46,7 +27,7 @@ npx husky add .husky/pre-commit "npx lint-staged --allow-empty && git add -A"
 npx husky add .husky/prepare-commit-msg "exec < /dev/tty && npx git-cz --hook || true"
 npx husky add .husky/commit-msg "npx commitlint -e $HUSKY_GIT_PARAMS"
 
-package.json
+// package.json
 {
   "lint-staged": {
     "src/**/*": "prettier --write --ignore-unknown"
@@ -58,15 +39,12 @@ package.json
   }
 }
 
-commitlint.config.js
+// commitlint.config.js
 module.exports = {
   extends: ["@commitlint/config-conventional"],
 };
-```
 
-## 运行方式
-
-```bash
+// 运行
 pnpm i
 
 因为对commit message有限制 提交代码请采用命令行方式提交git commit -m "test"

@@ -146,6 +146,12 @@ export default {
         test: /\.(jpe?g|png|webp|svg)$/i,
         type: "asset",
       },
+
+      {
+        test: /\.txt$/i,
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        loader: "./script/txt-loader.js",
+      },
     ],
   },
   plugins: [

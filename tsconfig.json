@@ -4,7 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "checkJs": true,
+    "checkJs": false,
     "declaration": false,
     "esModuleInterop": true,
     "isolatedModules": false,
@@ -16,11 +16,11 @@
     "resolveJsonModule": true,
     "sourceMap": false,
     "skipLibCheck": false,
-    "strict": true,
+    "strict": false,
     "target": "ES5"
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist"],
+  "exclude": ["dist", "script"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

@@ -51,3 +51,7 @@
 // let b = 0;
 // const c = a + b;
 // console.log(c);
+
+import txt from "./a.txt";
+
+console.log(txt);
